@@ -13,3 +13,6 @@ steps:
       '--no-promote',
       '--account=anabilbaruah2801@gmail.com'
     ]
+options:
+  logging: CLOUD_LOGGING_ONLY # or NONE
+timeout: '600s'

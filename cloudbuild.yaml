@@ -1,3 +1,7 @@
 steps:
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy']
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['clean', 'install','app', 'deploy']
+  timeout: 1200s
+options:
+  machineType: 'E2_HIGHCPU_8'
+  logging: { "gcsBucket": "my-logs-bucket" }

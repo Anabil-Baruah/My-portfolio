@@ -7,11 +7,19 @@ const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground'
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
-
+const service = require('../models/services')
+const blog = require('../models/Blogs')
+const work = require('../models/work')
 
 router.route('/')
-    .get((req, res) => {
-        res.render('index')
+    .get(async(req, res) => {
+        var services = await service.find({})
+        var works = await work.find({})
+        var blogs = await blog.find({})
+        works = JSON.parse(JSON.stringify(works))
+        blogs = JSON.parse(JSON.stringify(blogs))
+        services = JSON.parse(JSON.stringify(services))
+        res.render('index', {services, blogs, works})
     })
 
 router.route('/sendMsg')
@@ -28,7 +36,7 @@ router.route('/sendMessage')
 
         sendEmail(username, email, subject, message)
             .then(async (result) => {
-                console.log(result)
+                // console.log(result)
                 const newReq = new request({
                     username,
                     email,
@@ -50,7 +58,6 @@ router.route('/sendMessage')
                 }
 
             }).catch((err) => {
-                console.log("some error occured")
                 res.json({
                     status: "error",
                     message: "Sorry there has been some error plz try some other forms to reach me"

@@ -93,7 +93,7 @@
                     <div class="container">
 
                         <div class="row pb-4" data-aos="fade-up">
-                            <div class="col-lg-8">
+                            <div class="col-lg-12 text-center">
                                 <h6 class="text-brand">SERVICES</h6>
                                 <h1>Services That I Provide</h1>
                             </div>
@@ -111,28 +111,31 @@
                                     <p class="truncate">I specialize in developing scalable, high-performance
                                         applications using Node.js,
                                         express and ...</p>
-                                        <div class="d-flex justify-content-between">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#backendDev"
-                                        class="link-custom">Read More</a>
-                                </div>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#backendDev"
+                                            class="link-custom">Read More</a>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                                <div class="service p-4 bg-base rounded-4 shadow-effect services-box d-flex flex-column justify-content-between">
-                                  
+                                <div
+                                    class="service p-4 bg-base rounded-4 shadow-effect services-box d-flex flex-column justify-content-between">
+
                                     <div class="iconbox rounded-4">
-                                      <i class="fa-solid fa-database"></i>
+                                        <i class="fa-solid fa-database"></i>
                                     </div>
                                     <h5 class="mt-4 mb-2">Database development</h5>
-                                    <p class="truncate"> I am familiar with a variety of databases, scascascacsa ascdasca as</p>
-                                 
-                                  <div class="d-flex justify-content-between">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#DBMS" class="link-custom mt-auto">Read More</a>
-                                  </div>
+                                    <p class="truncate"> I am familiar with a variety of databases, scascascacsa
+                                        ascdasca as</p>
+
+                                    <div class="d-flex justify-content-between">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#DBMS"
+                                            class="link-custom mt-auto">Read More</a>
+                                    </div>
                                 </div>
-                              </div>
-                              
+                            </div>
+
 
                             <div class="col-md-4 " data-aos="fade-up" data-aos-delay="600">
                                 <div
@@ -144,17 +147,17 @@
                                     <p class="truncate">In addition to my expertise in backend development, I also have
                                         experience in
                                         DevOps and deployment... </p>
-                                        <div class="d-flex justify-content-between">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#devops"
-                                        class="link-custom mt-auto">Read
-                                        More</a>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#devops"
+                                            class="link-custom mt-auto">Read
+                                            More</a>
+                                    </div>
                                 </div>
+
+
                             </div>
 
-
                         </div>
-
-                    </div>
                 </section>
                 <!-- SERVICES -->
 
@@ -163,142 +166,74 @@
                     <div class="container">
 
                         <div class="row pb-4" data-aos="fade-up">
-                            <div class="col-lg-8">
+                            <div class="col-lg-12 text-center">
                                 <h6 class="text-brand">WORK</h6>
                                 <h1>My Recent Projects</h1>
                             </div>
                         </div>
 
                         <div class="row gy-4">
-
-                            <div class="col-md-6" data-aos="fade-up">
-                                <div class="card-custom rounded-4 bg-base shadow-effect projects-box">
-                                    <div class="card-custom-image rounded-4">
-                                        <img class="rounded-4" src="/images/project-1.jpg" alt="">
-                                    </div>
-                                    <div class="card-custom-content p-4">
-                                        <h4>Famesbook</h4>
-                                        <p class="truncate">A fully functional and scalable social media app that can
-                                            handel thousands of users at the same time </p>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#project1"
-                                            class="link-custom">Read More</a>
-                                        <a href="https://flames-book.uc.r.appspot.com" class="mx-3 link-custom">Live
-                                            demo</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                                <div class="card-custom rounded-4 bg-base shadow-effect projects-box">
-                                    <div class="card-custom-image rounded-4">
-                                        <img class="rounded-4" src="/images/rocket-chat-screen-shot.png" alt="">
-                                    </div>
-                                    <div class="card-custom-content p-4">
-                                        <h4>Rocket Chats</h4>
-                                        <p class="truncate">A chat application that can scale automatically, can hamdel
-                                            thousands of users simultaneously</p>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#project2"
-                                            class="link-custom">Read More</a>
-                                        <a href="https://chat-sphere-381410.el.r.appspot.com"
-                                            class="mx-3 link-custom">Live demo</a>
+                            <% works.forEach(({Heading, Description, LiveDemo, ReadMore})=> { %>
+                                <div class="col-md-6" data-aos="fade-up">
+                                    <div class="card-custom rounded-4 bg-base shadow-effect projects-box">
+                                        <div class="card-custom-image rounded-4">
+                                            <img class="rounded-4" src="/images/rocket-chat-screen-shot.png" alt="">
+                                        </div>
+                                        <div class="card-custom-content p-4">
+                                            <h4>
+                                                <%= Heading%>
+                                            </h4>
+                                            <p class="truncate">
+                                                <%= Description%>
+                                            </p>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#project1"
+                                                class="link-custom">Read More</a>
+                                            <a href="<%= LiveDemo%>" class="mx-3 link-custom">Live
+                                                demo</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </section>
+                <!-- //WORK -->
+                <!-- BLOG -->
+                <section id="blog" class="full-height px-lg-5">
+                    <div class="container">
 
-                            <div class="col-md-6" data-aos="fade-up">
-                                <div class="card-custom rounded-4 bg-base shadow-effect projects-box">
-                                    <div class="card-custom-image rounded-4">
-                                        <img class="rounded-4" src="/images/project-3.png" alt="">
-                                    </div>
-                                    <div class="card-custom-content p-4">
-                                        <h4>Startup Landing Page</h4>
-                                        <p class="truncate">Innovation that exceeds expectations. Astra is a true
-                                            template equiqed with
-                                            all the elements you could ever need to put together</p>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#project1"
-                                            class="link-custom">Read More</a>
-                                        <a href="https://flames-book.uc.r.appspot.com" class="mx-3 link-custom">Live
-                                            demo</a>
+                        <div class="row pb-4" data-aos="fade-up">
+                            <div class="col-lg-12 text-center ">
+                                <h6 class="text-brand">BLOG</h6>
+                                <h1>My BLog Posts</h1>
+                            </div>
+                        </div>
+
+                        <div class="row gy-4">
+                            <% blogs.forEach(blog => { %>
+                                <div class="col-md-4" data-aos="fade-up">
+                                    <div class="card-custom rounded-4 bg-base shadow-effect">
+                                        <div class="card-custom-image rounded-4">
+                                            <img class="rounded-4"
+                                                src="<%= blog.img %>"
+                                                alt="">
+                                        </div>
+                                        <div class="card-custom-content p-4">
+                                            <p class="text-brand mb-2">20 Dec, 2022</p>
+                                            <h5 class="mb-4"><%= blog.Description%></h5>
+                                            <a href="<%= blog.linkURL %>" class="link-custom">Read
+                                                More</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+    
+                           <% }); %>
 
-                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                                <div class="card-custom rounded-4 bg-base shadow-effect">
-                                    <div class="card-custom-image rounded-4">
-                                        <img class="rounded-4" src="/images/project-4.png" alt="">
-                                    </div>
-                                    <div class="card-custom-content p-4">
-                                        <h4>Startup Landing Page</h4>
-                                        <p class="truncate">Innovation that exceeds expectations. Astra is a true
-                                            template equiqed with
-                                            all the elements you could ever need to put together</p>
-                                        <a href="#" class="link-custom">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
                 </section>
-                <!-- //WORK -->
-<!-- BLOG -->
-<section id="blog" class="full-height px-lg-5">
-    <div class="container">
-
-        <div class="row pb-4" data-aos="fade-up">
-            <div class="col-lg-8">
-                <h6 class="text-brand">BLOG</h6>
-                <h1>My BLog Posts</h1>
-            </div>
-        </div>
-
-        <div class="row gy-4">
-
-            <div class="col-md-4" data-aos="fade-up">
-                <div class="card-custom rounded-4 bg-base shadow-effect">
-                    <div class="card-custom-image rounded-4">
-                        <img class="rounded-4" src="https://cdn.hashnode.com/res/hashnode/image/upload/v1680108490827/202dd012-0638-4144-9b28-55870fecec7a.jpeg?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp" alt="">
-                    </div>
-                    <div class="card-custom-content p-4">
-                        <p class="text-brand mb-2">20 Dec, 2022</p>
-                        <h5 class="mb-4">Getting started with node</h5>
-                        <a href="https://spooky-dev.hashnode.dev/node-js" class="link-custom">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-custom rounded-4 bg-base shadow-effect">
-                    <div class="card-custom-image rounded-4">
-                        <img class="rounded-4" src="/images/blog-post-3.jpg" alt="">
-                    </div>
-                    <div class="card-custom-content p-4">
-                        <p class="text-brand mb-2">20 Dec, 2022</p>
-                        <h5 class="mb-4"></h5>
-                        <a href="#" class="link-custom">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
-                <div class="card-custom rounded-4 bg-base shadow-effect">
-                    <div class="card-custom-image rounded-4">
-                        <img class="rounded-4" src="/images/blog-post-3.jpg" alt="">
-                    </div>
-                    <div class="card-custom-content p-4">
-                        <p class="text-brand mb-2">20 Dec, 2022</p>
-                        <h5 class="mb-4">Design a creative landing page using Bootstrap 5</h5>
-                        <a href="#" class="link-custom">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-<!-- //BLOG -->
+                <!-- //BLOG -->
 
 
 
@@ -307,56 +242,55 @@
                     <div class="container">
 
                         <div class="row pb-4" data-aos="fade-up">
-                            <div class="col-lg-8">
+                            <div class="col-lg-12 text-center">
                                 <h6 class="text-brand">ABOUT</h6>
                                 <h1>My Education</h1>
                             </div>
                         </div>
 
-                        <div class="row gy-5">
-                            <div class="col-lg-6">
+
+                        <div class="col-lg-10">
 
 
-                                <div class="row gy-4">
+                            <div class="row gy-5">
 
-                                    <div class="col-12" data-aos="fade-up" data-aos-delay="600">
-                                        <div class="bg-base p-4 rounded-4 shadow-effect">
-                                            <h4>High School</h4>
-                                            <p class="text-brand mb-2">Carmel School (2005 - 2018)</p>
+                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="bg-base p-4 rounded-4 shadow-effect">
+                                        <h4>High School</h4>
+                                        <p class="text-brand mb-2">Carmel School (2005 - 2018)</p>
 
-                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="col-12" data-aos="fade-up" data-aos-delay="600">
-                                        <div class="bg-base p-4 rounded-4 shadow-effect">
-                                            <h4>Higher Secondary</h4>
-                                            <p class="text-brand mb-2">Pragya Academy (2018 - 2020)</p>
+                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="bg-base p-4 rounded-4 shadow-effect">
+                                        <h4>Higher Secondary</h4>
+                                        <p class="text-brand mb-2">Pragya Academy (2018 - 2020)</p>
 
-                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="col-12" data-aos="fade-up" data-aos-delay="600">
-                                        <div class="bg-base p-4 rounded-4 shadow-effect">
-                                            <h4>Batchelor of Engineering</h4>
-                                            <p class="text-brand mb-2">Jorhat Institute of science and technology (2020
-                                                - 2024)</p>
+                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="bg-base p-4 rounded-4 shadow-effect">
+                                        <h4>Batchelor of Technology</h4>
+                                        <p class="text-brand mb-2">Jorhat Institute of science and technology
+                                            (2020
+                                            - 2024)</p>
 
-                                        </div>
                                     </div>
-
                                 </div>
 
                             </div>
 
-
                         </div>
 
+
+
                     </div>
+
                 </section>
                 <!-- //ABOUT -->
-
-
-
+                
                 <!-- CONTACT -->
                 <section id="contact" class="full-height px-lg-5">
                     <div class="container">

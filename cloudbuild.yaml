@@ -1,18 +1,3 @@
 steps:
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['install']
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['run', 'build']
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: [
-      'app',
-      'deploy',
-      '--project=anabil-baruah',
-      '--version=20230322t005649',
-      '--quiet',
-      '--no-promote',
-      '--account=anabilbaruah2801@gmail.com'
-    ]
-options:
-  logging: CLOUD_LOGGING_ONLY # or NONE
-timeout: '600s'
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy']

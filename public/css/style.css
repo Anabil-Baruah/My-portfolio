@@ -75,14 +75,19 @@ img {
     box-shadow: -6px 6px 0 0 var(--color-brand);
 }
 
-.truncate {
+table {
+    border-collapse: collapse;
+}
+
+td {
+    max-width: 200px;
+    /* set the maximum width for the column */
     overflow: hidden;
+    /* hide any content that exceeds the max-width */
     text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    /* number of lines to show */
-    -webkit-box-orient: vertical;
-    white-space: normal;
+    /* add an ellipsis to the end of the text if it overflows */
+    white-space: nowrap;
+    /* prevent the text from wrapping to a new line */
 }
 
 .iconbox {

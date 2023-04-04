@@ -30,7 +30,16 @@ nav #edit-image{
     z-index: 2;
 
 }
-
+table {
+    border-collapse: collapse;
+  }
+  
+  td {
+    max-width: 200px; /* set the maximum width for the column */
+    overflow: hidden; /* hide any content that exceeds the max-width */
+    text-overflow: ellipsis; /* add an ellipsis to the end of the text if it overflows */
+    white-space: nowrap; /* prevent the text from wrapping to a new line */
+  }
 nav #edit-image h3{
     font-size: 3rem;
    color: #7d7d7d;

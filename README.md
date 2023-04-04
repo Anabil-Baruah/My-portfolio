@@ -1,7 +1,7 @@
 
 # Personal Portfolio
 
-## Image screenshots
+## Screenshots
 
 ![Home Page](https://res.cloudinary.com/dudvqptv0/image/upload/v1680634878/personalPortfolio/profilePhotoDp_mmozfl.png)
 

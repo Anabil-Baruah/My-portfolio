@@ -1,5 +1,5 @@
 node_modules
+admin.ejs
+admin.js
 .env
 package-lock.json
-admin.ejs/
-admin.js/

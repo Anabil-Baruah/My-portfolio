@@ -55,6 +55,13 @@ img {
 .bg-base {
     background-color: var(--color-base);
 }
+.truncate {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; /* Maximum number of lines to show */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .full-height {
     min-height: 100vh;

@@ -8,11 +8,13 @@ This is my personal portfolio website, built using Bootstrap 5. It features a re
 
 ![Projects section](https://res.cloudinary.com/dudvqptv0/image/upload/v1680634863/personalPortfolio/profilePhotoDp2_mezova.png)
 
+### Admin page
+
 ![Admin pannel](https://res.cloudinary.com/dudvqptv0/image/upload/v1680962371/adminPannel1_qyqrfr.png)
 
 ![Add your latest work to your admin pannel](https://res.cloudinary.com/dudvqptv0/image/upload/v1680962434/adminPannel2_emph6d.png)
 
-(https://res.cloudinary.com/dudvqptv0/image/upload/v1680962584/adminPannel3_lgeqig.png)
+![Add modal](https://res.cloudinary.com/dudvqptv0/image/upload/v1680962584/adminPannel3_lgeqig.png)
 
 
 ## Demo

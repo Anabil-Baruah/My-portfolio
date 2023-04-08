@@ -1,5 +1,6 @@
 <%- include('includes/header')%>
-    <%- include('includes/modals')%>
+    <%- include('includes/modals.ejs', {readMoreWork, readMoreServices})%>
+
 
         <body data-bs-spy="scroll" data-bs-target=".navbar">
 
@@ -69,16 +70,17 @@
                                     applications.</p>
                                 <div data-aos="fade-up" data-aos-delay="600" class="headers">
                                     <a href="#work" class="btn btn-brand me-3 ">Explore My Work</a>
+                                    <a href="https://resume.io/r/Ue2oL5ELO" class="CV btn btn-brand me-3 ">My CV</a>
                                     <div class="d-block d-sm-none "><br></div>
                                     <a href="#" class="link-custom">Call:+91-8822501465</a>
                                     <div class="my-3 social-icons">
-                                        <a class="mx-2" href="https://twitter.com/anabil_baruah"><i
-                                                class="lab la-twitter fs-1"></i></a>
                                         <a class="mx-2" href="https://www.linkedin.com/in/anabil-baruah-7a73711b9/"><i
                                                 class="lab la-linkedin fs-1"></i></a>
-                                        <!-- <a href="#"><i class="lab la-dribbble"></i></a> -->
                                         <a class="mx-2" href="https://github.com/Anabil-Baruah"><i
                                                 class="lab la-github fs-1"></i></a>
+                                        <a class="mx-2" href="https://twitter.com/anabil_baruah"><i
+                                                class="lab la-twitter fs-1"></i></a>
+                                        <!-- <a href="#"><i class="lab la-dribbble"></i></a> -->
                                     </div>
                                 </div>
                             </div>
@@ -100,63 +102,30 @@
                         </div>
 
                         <div class="row gy-4 ">
+                            <% var modalNumber=1 %>
+                                <% services.forEach(({Heading, Content, fontAwesomClass})=> { %>
 
-                            <div class="col-md-4 " data-aos="fade-up">
-                                <div
-                                    class="service p-4 bg-base rounded-4 shadow-effect services-box d-flex flex-column justify-content-between">
-                                    <div class="iconbox rounded-4">
-                                        <i class="fa-solid fa-code"></i>
+                                    <div class="col-md-4 " data-aos="fade-up">
+                                        <div
+                                            class="service p-4 bg-base rounded-4 shadow-effect services-box d-flex flex-column justify-content-between">
+                                            <div class="iconbox rounded-4">
+                                                <i class="<%=fontAwesomClass%>"></i>
+                                            </div>
+                                            <h5 class="mt-4 mb-2">
+                                                <%= Heading%>
+                                            </h5>
+                                            <p class="truncate">
+                                                <%= Content%>
+                                            </p>
+                                            <div class="d-flex justify-content-between">
+                                                <a href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#service<%= modalNumber%>" class="link-custom">Read
+                                                    More</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <h5 class="mt-4 mb-2">Backend Developement</h5>
-                                    <p class="truncate">I specialize in developing scalable, high-performance
-                                        applications using Node.js,
-                                        express and ...</p>
-                                    <div class="d-flex justify-content-between">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#backendDev"
-                                            class="link-custom">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                                <div
-                                    class="service p-4 bg-base rounded-4 shadow-effect services-box d-flex flex-column justify-content-between">
-
-                                    <div class="iconbox rounded-4">
-                                        <i class="fa-solid fa-database"></i>
-                                    </div>
-                                    <h5 class="mt-4 mb-2">Database development</h5>
-                                    <p class="truncate"> I am familiar with a variety of databases, scascascacsa
-                                        ascdasca as</p>
-
-                                    <div class="d-flex justify-content-between">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#DBMS"
-                                            class="link-custom mt-auto">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-4 " data-aos="fade-up" data-aos-delay="600">
-                                <div
-                                    class="service p-4 bg-base rounded-4 shadow-effect services-box d-flex flex-column justify-content-between">
-                                    <div class="iconbox rounded-4">
-                                        <i class="fa-solid fa-layer-group"></i>
-                                    </div>
-                                    <h5 class="mt-4 mb-2">Devops</h5>
-                                    <p class="truncate">In addition to my expertise in backend development, I also have
-                                        experience in
-                                        DevOps and deployment... </p>
-                                    <div class="d-flex justify-content-between">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#devops"
-                                            class="link-custom mt-auto">Read
-                                            More</a>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
+                                    <% modalNumber++%>
+                                        <%})%>
                         </div>
                 </section>
                 <!-- SERVICES -->
@@ -173,27 +142,48 @@
                         </div>
 
                         <div class="row gy-4">
-                            <% works.forEach(({Heading, Description, LiveDemo, ReadMore, imgURL})=> { %>
-                                <div class="col-md-6" data-aos="fade-up">
-                                    <div class="card-custom rounded-4 bg-base shadow-effect projects-box">
-                                        <div class="card-custom-image rounded-4">
-                                            <img class="rounded-4" src="<%= imgURL %>" alt="">
-                                        </div>
-                                        <div class="card-custom-content p-4">
-                                            <h4>
-                                                <%= Heading%>
-                                            </h4>
-                                            <p class="truncate">
-                                                <%= Description%>
-                                            </p>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#project1"
-                                                class="link-custom">Read More</a>
-                                            <a href="<%= LiveDemo%>" class="mx-3 link-custom">Live
-                                                demo</a>
+                            <% var modalNumber=1 %>
+                                <% works.forEach(({Heading, Description, LiveDemo, ReadMore, imgURL})=> { %>
+                                    <div class="col-md-6" data-aos="fade-up">
+                                        <div class="card-custom rounded-4 bg-base shadow-effect projects-box">
+                                            <div class="card-custom-image rounded-4">
+                                                <img class="rounded-4" src="<%= imgURL %>" alt="">
+                                            </div>
+                                            <div class="card-custom-content p-4">
+                                                <h4>
+                                                    <%= Heading%>
+                                                </h4>
+                                                <p class="truncate">
+                                                    <%= Description%>
+                                                </p>
+                                                <a href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#project<%= modalNumber%>" class="link-custom">Read
+                                                    More</a>
+                                                <a href="<%= LiveDemo%>" class="mx-3 link-custom">Live
+                                                    demo</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            <% }) %>
+                                    <% modalNumber++%>
+                                        <% }) %>
+                                            <div class="col-md-6" data-aos="fade-up">
+                                                <div class="card-custom rounded-4 bg-base shadow-effect projects-box">
+                                                    <a href="https://github.com/Anabil-Baruah?tab=repositories">
+                                                        <div class="card-custom-image rounded-4 d-flex justify-content-center"
+                                                            style="font-size: 5rem;">
+                                                            <div class="container text-center">
+                                                                <i class="fa-brands fa-github"></i>
+
+                                                                <i class="fa-solid fa-plus"
+                                                                    style="font-size: 3rem;"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-custom-content p-4 text-center">
+                                                            <h4>And many more</h4>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
                         </div>
                     </div>
                 </section>
@@ -210,25 +200,41 @@
                         </div>
 
                         <div class="row gy-4">
-                            <% blogs.forEach(blog => { %>
+                            <% blogs.forEach(blog=> { %>
                                 <div class="col-md-4" data-aos="fade-up">
                                     <div class="card-custom rounded-4 bg-base shadow-effect">
                                         <div class="card-custom-image rounded-4">
-                                            <img class="rounded-4"
-                                                src="<%= blog.img %>"
-                                                alt="">
+                                            <img class="rounded-4" src="<%= blog.img %>" alt="">
                                         </div>
                                         <div class="card-custom-content p-4">
                                             <p class="text-brand mb-2">20 Dec, 2022</p>
-                                            <h5 class="mb-4"><%= blog.Description%></h5>
+                                            <h5 class="mb-4">
+                                                <%= blog.Description%>
+                                            </h5>
                                             <a href="<%= blog.linkURL %>" class="link-custom">Read
                                                 More</a>
                                         </div>
                                     </div>
                                 </div>
-    
-                           <% }); %>
+                                <% }); %>
+                                    <!-- <div class="col-md-4" data-aos="fade-up">
+                                        <div class="card-custom rounded-4 bg-base shadow-effect">
+                                            <div class="card-custom-image rounded-4 d-flex justify-content-center"
+                                                style="font-size: 5rem;">
+                                                <div class="container text-center">
+                                                    <i class="fa-brands fa-hashnode"></i>
 
+
+                                                    <i class="fa-solid fa-plus mb-2" style="font-size: 3rem; padding-bottom: 1rem;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="card-custom-content p-4 text-center">
+                                                <h4>
+                                                    <p class="text-brand mb-2">And many more</p>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div> -->
                         </div>
 
                     </div>
@@ -251,10 +257,10 @@
 
                         <div class="col-lg-10">
 
-
+                            
                             <div class="row gy-5">
 
-                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
+                                <div class="col-12 " data-aos="fade-up" data-aos-delay="600">
                                     <div class="bg-base p-4 rounded-4 shadow-effect">
                                         <h4>High School</h4>
                                         <p class="text-brand mb-2">Carmel School (2005 - 2018)</p>
@@ -262,7 +268,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
+                                <div class="col-12 glassmorphism" data-aos="fade-up" data-aos-delay="600">
                                     <div class="bg-base p-4 rounded-4 shadow-effect">
                                         <h4>Higher Secondary</h4>
                                         <p class="text-brand mb-2">Pragya Academy (2018 - 2020)</p>
@@ -270,7 +276,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
+                                <div class="col-12 glassmorphism" data-aos="fade-up" data-aos-delay="600">
                                     <div class="bg-base p-4 rounded-4 shadow-effect">
                                         <h4>Batchelor of Technology</h4>
                                         <p class="text-brand mb-2">Jorhat Institute of science and technology
@@ -290,7 +296,7 @@
 
                 </section>
                 <!-- //ABOUT -->
-                
+
                 <!-- CONTACT -->
                 <section id="contact" class="full-height px-lg-5">
                     <div class="container">

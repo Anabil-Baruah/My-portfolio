@@ -19,7 +19,17 @@ router.route('/')
         works = JSON.parse(JSON.stringify(works))
         blogs = JSON.parse(JSON.stringify(blogs))
         services = JSON.parse(JSON.stringify(services))
-        res.render('index', {services, blogs, works})
+
+        const readMoreWork = []
+        works.forEach((work)=>{
+            readMoreWork.push({ReadMore:work.ReadMore, Heading:work.Heading})
+        })
+        const readMoreServices = []
+        services.forEach((service)=>{
+            readMoreServices.push({Content:service.Content, Heading:service.Heading})
+        })
+        
+        res.render('index', {services, blogs, works, readMoreWork:readMoreWork, readMoreServices: readMoreServices})
     })
 
 router.route('/sendMsg')

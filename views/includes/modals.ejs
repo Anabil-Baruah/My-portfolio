@@ -1,79 +1,41 @@
 <!-- Modal -->
-  
-<div class="modal fade" id="backendDev" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="backendDevLabel" aria-hidden="true">
+<% var serviceNumber = 1%>
+<% readMoreServices.forEach((service)=>{ %>
+<div class="modal fade" id="service<%=serviceNumber%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="backendDevLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="backendDevLabel">Backend Developement</h1>
+        <h1 class="modal-title fs-5" id="backendDevLabel"><%= service.Heading%></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          Hi there, I'm Anabil, a backend developer with a passion for creating efficient, scalable, and secure web applications. I'm proficient in a variety of programming languages and frameworks, and I enjoy exploring new technologies and tools that can help me improve my craft .My expertise with Node.js and Express.js has enabled me to build complex and robust APIs that can handle high traffic and large data volumes. I have extensive experience designing, developing, and optimizing backend systems, ensuring maximum performance and reliability.Moreover, my extensive experience working with MongoDB has allowed me to develop an intimate understanding of database design and management, including efficient indexing and query optimization techniques.
+          <%= service.Content%>
       </div>
     </div>
   </div>
 </div>
 </div>
+<% serviceNumber++ %>
+<%})%>
 
-
-
-<div class="modal fade" id="DBMS" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="DBMSLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="DBMSLabel">DBMS</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Database development and management:</h5>
-        <p> I am familiar with a variety of databases, including MongoDB, SQL, and Redis for caching. I can help you design, develop, and manage your database, ensuring that it's secure, reliable, and efficient.
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<div class="modal fade" id="devops" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="devopsLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="devopsLabel">Devops</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        In addition to my expertise in backend development, I also have experience in DevOps and deployment. I understand the importance of automating processes and optimizing infrastructure to ensure that web applications run smoothly and reliably.Most of my projects are hosted in google app engine or google compute engine and can handle thousands of users at the same time.
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
 <!-- project modals -->
+<% var projectNo = 1 %>
+<% readMoreWork.forEach((work)=>{ %>
+<div class="modal fade" id="project<%= projectNo%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="project1Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="project1Label"><%= work.Heading %></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= work.ReadMore %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<% projectNo++ %>
+<%})%>
 
-<div class="modal fade" id="project1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="project1Label" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="project1Label">FamesBook</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        FamesBook is a full-stack social media web application that allows users to connect with each other by sharing, liking, and commenting on each other's posts. You can also upload your own posts, create your own profile, and search for other users. Our application is built with Node.js, Express, and MongoDB, providing a reliable and scalable foundation for your social media needs.
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<div class="modal fade" id="project2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="project2Label" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="project2Label">Rocket Chats</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Rocket chats is a cutting-edge chat web application that provides an unparalleled user experience. With its advanced scalability and lightning-fast response time, it can handle a vast user base with ease. The application is hosted in Google's App Engine, ensuring optimal performance and stability. Rocket chats utilizes the latest technology stacks, including MongoDB, Node, Express, GCP, and Redis, to provide users with an intuitive and reliable chat experience. Whether you're communicating with friends, family, or colleagues, Rocket chats delivers a seamless chat experience that is second to none.
-      </div>
-    </div>
-  </div>
-</div>
-</div>

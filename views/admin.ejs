@@ -1,8 +1,9 @@
 <%- include('includes/header')%>
-    <link rel="stylesheet" href="/css/admin.css">
-    <%- include('includes/modals')%>
+    <%- include('includes/adminModals', {works})%>
+        <link rel="stylesheet" href="/css/admin.css">
 
         <body data-bs-spy="scroll" data-bs-target=".navbar">
+
 
             <!-- NAVBAR -->
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -29,10 +30,10 @@
                         <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#home">Home</a>
+                                <a class="nav-link" href="#home">Analytics</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#services">Services</a>
+                                <a class="nav-link" href="#Requests">Requests</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#work">Work</a>
@@ -40,9 +41,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#blogs">Blogs</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#statistics">Statistics</a>
-                            </li>
+
 
                         </ul>
                     </div>
@@ -55,7 +54,7 @@
                 <!-- HOME -->
                 <section id="home" class="full-height px-lg-5">
                     <div class="row pb-4" data-aos="fade-up">
-                        <div class="col-lg-8 text-center">
+                        <div class="col-lg-8 ">
                             <h4 class="text-brand">ANALYTICS</h4>
                         </div>
                     </div>
@@ -69,24 +68,68 @@
                             <div class="col-lg-6">
                                 <div class="container">
                                     <h2></h2>
-                                    <canvas id="barChart"></canvas>
+                                    <canvas id="barChart" style="height: 1000px;"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </section>
+
+
                 <!-- //HOME -->
 
 
-                <!-- WORK -->
-                <section id="work" class="full-height px-lg-5">
+                <!-- REQUEST -->
+                <section id="Requests" class="py-5 my-5">
                     <div class="container">
                         <div class="row pb-4" data-aos="fade-up">
                             <div class="col-lg-8">
-                                <h6 class="text-brand">WORK</h6>
-                                <h1>My Recent Projects</h1>
+                                <h4 class="text-brand">REQUESTS</h4>
+                            </div>
+                        </div>
+
+                        <div class="container p-5">
+                        <div class="row gy-5 p-5">
+
+                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="bg-base p-4 rounded-4 shadow-effect">
+                                        <h4>High School</h4>
+                                        <p class="text-brand mb-2">Carmel School (2005 - 2018)</p>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="bg-base p-4 rounded-4 shadow-effect">
+                                        <h4>Higher Secondary</h4>
+                                        <p class="text-brand mb-2">Pragya Academy (2018 - 2020)</p>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="bg-base p-4 rounded-4 shadow-effect">
+                                        <h4>Batchelor of Technology</h4>
+                                        <p class="text-brand mb-2">Jorhat Institute of science and technology
+                                            (2020
+                                            - 2024)</p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- //REQUEST -->
+
+                <!-- WORK -->
+                <section id="work" class="py-5 my-5">
+                    <div class="container">
+                        <div class="row pb-4" data-aos="fade-up">
+                            <div class="col-lg-8">
+                                <h4 class="text-brand">WORK</h4>
                             </div>
                         </div>
 
@@ -117,20 +160,27 @@
                                                 <td>
                                                     <%= work.Heading %>
                                                 </td>
-                                                <td>@<%= work.LiveDemo %>
+                                                <td>
+                                                    <%= work.LiveDemo %>
                                                 </td>
-                                                <td><button type="submit" class="btn btn-success p-1">Edit</button></td>
+                                                <td><button data-bs-toggle="modal"
+                                                        data-bs-target="#editProjectModal<%= count%>" type="submit"
+                                                        class="btn btn-success p-1">Edit</button></td>
                                             </tr>
                                             <% count++ %>
                                                 <% }); %>
 
                                                     <tr>
-                                                        <form>
+                                                        <form id="addWork">
                                                             <td></td>
-                                                            <td><input type="file" class="form-control"></td>
-                                                            <td><input type="text" class="form-control"></td>
-                                                            <td><input type="text" class="form-control"></td>
-                                                            <td><input type="text" class="form-control"></td>
+                                                            <td><input type="file" id="file-input1" name="profileImg"
+                                                                    class="form-control"></td>
+                                                            <td><input type="text" name="desc" class="form-control">
+                                                            </td>
+                                                            <td><input type="text" name="title" class="form-control">
+                                                            </td>
+                                                            <td><input type="text" name="liveLink" class="form-control">
+                                                            </td>
                                                             <td><button type="submit"
                                                                     class="btn btn-primary p-1">Submit</button></td>
                                                         </form>
@@ -147,8 +197,7 @@
                     <div class="container">
                         <div class="row pb-4" data-aos="fade-up">
                             <div class="col-lg-8">
-                                <h6 class="text-brand">BLOGS</h6>
-                                <h1>My Recent Blogs</h1>
+                                <h4 class="text-brand">BLOGS</h4>
                             </div>
                         </div>
 
@@ -178,7 +227,9 @@
                                                 <td>
                                                     <%= blog.Description %>
                                                 </td>
-                                                <td><button type="submit" class="btn btn-success p-1">Edit</button></td>
+                                                <td><button data-bs-toggle="modal"
+                                                        data-bs-target="#editBlogModal<%= count%>" type="submit"
+                                                        class="btn btn-success p-1">Edit</button></td>
                                             </tr>
                                             <% count++ %>
                                                 <% }); %>
@@ -198,26 +249,38 @@
                     </div>
                 </section>
                 <!-- //BLOG -->
-
-                <!-- STATISTICS -->
-                <section id="statistics" class="full-height px-lg-5">
-                    <div class="container">
-
-                        <div class="row justify-content-center text-center">
-                            <div class="col-lg-8 pb-4" data-aos="fade-up">
-                                <h6 class="text-brand">STASTICS</h6>
-                                <h1>Statistics from the last month</h1>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </section>
-                <!-- //CONTACT -->
+                <br>
 
                 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
-
                 <script>
+
+                    const addWork = document.querySelector('#addWork')
+
+                    addWork.addEventListener('submit', async (event) => {
+                        event.preventDefault();
+
+                        const formData = new FormData(addWork);
+
+                        const fileInput = document.querySelector('#file-input1')
+                        const file = fileInput.files[0];
+                        var base64String
+                        if (file !== undefined) {
+
+                            const reader = new FileReader();
+                            reader.readAsBinaryString(file);
+                            base64String = await new Promise((resolve) => {
+                                reader.addEventListener('load', () => {
+                                    resolve(btoa(reader.result));
+                                });
+                            });
+
+                            formData.append('base64String', base64String)
+                            formData.append('fileType', file.type)
+                        }
+                        const formValues = Object.fromEntries(formData.entries());
+                        console.log(formValues)
+                    });
+
                     // select the canvas element
                     const canvas = document.getElementById('piChart');
 
@@ -225,11 +288,23 @@
                     const chart = new Chart(canvas, {
                         type: 'pie',
                         data: {
-                            labels: ['Red', 'Blue', 'Yellow'],
+                            labels: ['Visitors', 'Requests', 'Redirections'],
                             datasets: [{
                                 data: [30, 20, 30],
                                 backgroundColor: ['red', 'blue', 'yellow']
                             }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        color: 'white',
+                                        font: {
+                                            size: 16
+                                        }
+                                    }
+                                }
+                            }
                         }
                     });
 
@@ -243,17 +318,43 @@
                         data: {
                             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                             datasets: [{
-                                label: 'Sales',
+                                label: 'Profile Visitors',
                                 data: [10, 20, 30, 15, 25, 35, 20],
-                                backgroundColor: ['red', 'blue', 'yellow', 'green', 'orange', 'purple', 'teal']
+                                backgroundColor: 'green'
                             }]
                         },
                         options: {
                             scales: {
                                 y: {
-                                    beginAtZero: true
+                                    beginAtZero: true,
+                                    ticks: {
+                                        font: {
+                                            size: 16
+                                        },
+                                        color: 'white'
+                                    }
+                                },
+                                x: {
+                                    ticks: {
+                                        font: {
+                                            size: 16
+                                        },
+                                        color: 'white'
+                                    }
                                 }
-                            }
+                            },
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        color: 'white',
+                                        font: {
+                                            size: 16
+                                        }
+                                    }
+                                }
+                            },
+                            responsive: true,
+                            height: 400 // set the height here
                         }
                     });
 

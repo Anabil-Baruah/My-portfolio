@@ -158,6 +158,9 @@ td {
     .myAvatar img {
         border: 8px solid var(--color-brand);
     }
+    .CV{
+        margin-top: 1rem;
+    }
 }
 
 /* BTN */

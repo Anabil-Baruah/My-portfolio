@@ -1,0 +1,199 @@
+<% var projectNo=1 %>
+    <% works.forEach((work)=>{ %>
+        <div class="modal fade" id="editProjectModal<%= projectNo%>" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="projectModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="project1Label">
+                            <%=work.Heading%>
+                        </h1>
+                        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <form id="editWork">
+                                <div class="mb-3">
+                                    <label class="text-center">
+                                        <img src="<%= work.imgURL%>" alt="" style="z-index: 2;"
+                                            class=" w-25 h-25 img-fluid img-overflow">
+                                        <h2 class="container" style="margin: -35px 0px 0px 25px;">
+                                            <i class="fa-solid fa-circle-plus text-light bg-dark rounded-circle"></i>
+                                        </h2>
+                                        <div id="emailHelp" class="form-text text-light" style="z-index: 2;">Choose
+                                            an
+                                            image
+                                        </div>
+                                        <input type="file" name="imgURL" class="d-none form-control" id="editFileInput">
+                                    </label>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="liveDemo" class="form-label">Live demo</label>
+                                    <input type="text" name="liveDemo" class="form-control" id="liveDemo"
+                                        aria-describedby="emailHelp" value="<%= work.LiveDemo%>">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="heading" class="form-label">Heading</label>
+                                    <input type="text" name="heading" class="form-control" id="heading"
+                                        aria-describedby="emailHelp" value="<%= work.Heading%>">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea type="text" name="description" class="form-control" id="description"
+                                        aria-describedby="emailHelp"><%= work.Description%></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="readmore" class="form-label">Read More</label>
+                                    <textarea type="text" name="readMore" class="form-control"
+                                        id="readmore"><%= work.ReadMore%></textarea>
+                                </div>
+                                <input type="hidden" name="_id" value="<%= work._id%>">
+                                <div class="p-0 form-check">
+                                    <button type="submit" class="btn btn-success p-1">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <% projectNo++ %>
+            <%})%>
+
+                <% var blogNo=1 %>
+                    <% blogs.forEach((blog)=>{ %>
+                        <div class="modal fade" id="editBlogModal<%= blogNo%>" data-bs-backdrop="static"
+                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="blogModal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="blogLabel">
+                                            <%=blog.Description%>
+                                        </h1>
+                                        <button type="button" class="btn-close " data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <form id="editBlog">
+                                                <div class="mb-3">
+                                                    <label class="text-center">
+                                                        <img id="blogImage" src="<%= blog.img%>" alt=""
+                                                            style="z-index: 2;"
+                                                            class=" w-25 h-25 img-fluid img-overflow">
+                                                    </label>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="imgURL" class="form-label" >imgURL</label>
+                                                    <textarea type="text" name="imgURL" class="form-control"
+                                                    id="imgURL"
+                                                        aria-describedby="emailHelp"><%= blog.img%></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="description" class="form-label">Description</label>
+                                                    <textarea type="text" name="description" class="form-control"
+                                                        id="description"
+                                                        aria-describedby="emailHelp"><%= blog.Description%></textarea>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="description" class="form-label">Blog link</label>
+                                                    <textarea type="text" name="blogLink" class="form-control"
+                                                        id="description"
+                                                        aria-describedby="emailHelp"><%= blog.linkURL%></textarea>
+                                                </div>
+                                                <input type="hidden" name="_id" value="<%= blog._id%>">
+                                                <div class="p-0 form-check">
+                                                    <button type="submit" class="btn btn-success p-1">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <% blogNo++ %>
+                            <%})%>
+                                <script>
+                                    const baseURL = "http://localhost:3000"
+                                    const editWork = document.querySelector('#editWork')
+                                    editWork.addEventListener('submit', async (event) => {
+                                        event.preventDefault();
+
+                                        const formData = new FormData(editWork);
+
+
+                                        const fileInput = document.querySelector('#editFileInput')
+                                        const file = fileInput.files[0];
+                                        var base64String
+                                        if (file !== undefined) {
+                                            const reader = new FileReader();
+                                            reader.readAsBinaryString(file);
+                                            base64String = await new Promise((resolve) => {
+                                                reader.addEventListener('load', () => {
+                                                    resolve(btoa(reader.result));
+                                                });
+                                            });
+
+                                            formData.append('base64String', base64String)
+                                            formData.append('fileType', file.type)
+                                        }
+                                        const formValues = Object.fromEntries(formData.entries());
+                                        fileInput.value === "" && delete formValues.imgURL;
+                                        console.log(formValues)
+
+                                        $.ajax({
+                                            url: `${baseURL}/admin/editProject`,
+                                            method: 'PUT',
+                                            data: JSON.stringify(formValues),
+                                            contentType: 'application/json',
+                                            success: function (response) {
+                                                if (response.status === "success") {
+                                                    location.reload()
+                                                }else{
+                                                    alert(response.message)
+                                                }
+                                            },
+                                            error: function (response) {
+                                                alert("Some error occured")
+                                            }
+                                        })
+
+                                    })
+
+                                    const editBlog = document.querySelector('#editBlog')
+                                    document.querySelector('textarea[id="imgURL"]').addEventListener('change', (event)=>{
+                                        event.preventDefault()
+                                        console.log("haga")
+                                        document.querySelector('#blogImage').src = event.target.value;
+                                    })
+                                    editBlog.addEventListener('submit', async (event) => {
+                                        event.preventDefault();
+
+                                        const formData = new FormData(editBlog);
+
+                                        const formValues = Object.fromEntries(formData.entries());
+
+                                        document.querySelector('#blogImage').src = formValues.imgURL
+
+                                        $.ajax({
+                                            url: `${baseURL}/admin/editBlog`,
+                                            method: 'PUT',
+                                            data: JSON.stringify(formValues),
+                                            contentType: 'application/json',
+                                            success: function (response) {
+                                                if(response.status === "success"){
+                                                    location.reload()
+                                                }
+                                                else if(response.status === "error")
+                                                    alert(response.message)
+                                                else
+                                                    alert(response.message)
+                                            },
+                                            error: function (response) {
+                                                alert(response.message)
+                                            }
+                                        })
+
+                                    })
+                                </script>

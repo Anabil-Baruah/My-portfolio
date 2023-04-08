@@ -30,6 +30,17 @@ nav #edit-image{
     z-index: 2;
 
 }
+.modal-body input{
+    background-color: transparent;
+    color: white;
+}
+.modal-body input[type="text"] , 
+.modal-body textarea[type="text"]{
+    background-color: transparent !important;
+    color: white;
+  }
+
+  
 table {
     border-collapse: collapse;
   }
@@ -51,4 +62,16 @@ nav #edit-image h3 i{
     position: relative;
     margin: -53px 0 10px 0;
     padding: 2px -2px 0 0;
+}
+.glassmorphism {
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Set the background color with transparency */
+    backdrop-filter: blur(10px);
+    /* Apply a blur effect to the background */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* Add a border with transparency */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* Add a box shadow for depth */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }

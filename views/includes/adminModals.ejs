@@ -90,17 +90,17 @@
                                                         aria-describedby="emailHelp"><%= blog.img%></textarea>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="description" class="form-label">Description</label>
-                                                    <textarea type="text" name="description" class="form-control"
+                                                    <label for="description" class="form-label">Heading</label>
+                                                    <textarea type="text" name="heading" class="form-control"
                                                         id="description"
-                                                        aria-describedby="emailHelp"><%= blog.Description%></textarea>
+                                                        aria-describedby="emailHelp"><%= blog.Heading%></textarea>
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label for="description" class="form-label">Blog link</label>
                                                     <textarea type="text" name="blogLink" class="form-control"
                                                         id="description"
-                                                        aria-describedby="emailHelp"><%= blog.linkURL%></textarea>
+                                                        aria-describedby="emailHelp"><%= blog.blogLink%></textarea>
                                                 </div>
                                                 <input type="hidden" name="_id" value="<%= blog._id%>">
                                                 <div class="p-0 form-check">
@@ -144,7 +144,7 @@
 
                                         $.ajax({
                                             url: `${baseURL}/admin/editProject`,
-                                            method: 'PUT',
+                                            method: 'POST',
                                             data: JSON.stringify(formValues),
                                             contentType: 'application/json',
                                             success: function (response) {
@@ -164,7 +164,7 @@
                                     const editBlog = document.querySelector('#editBlog')
                                     document.querySelector('textarea[id="imgURL"]').addEventListener('change', (event)=>{
                                         event.preventDefault()
-                                        console.log("haga")
+                                       
                                         document.querySelector('#blogImage').src = event.target.value;
                                     })
                                     editBlog.addEventListener('submit', async (event) => {
@@ -178,7 +178,7 @@
 
                                         $.ajax({
                                             url: `${baseURL}/admin/editBlog`,
-                                            method: 'PUT',
+                                            method: 'POST',
                                             data: JSON.stringify(formValues),
                                             contentType: 'application/json',
                                             success: function (response) {

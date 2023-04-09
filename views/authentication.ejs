@@ -1,0 +1,55 @@
+<%- include('includes/header')%>
+
+
+    <body data-bs-spy="scroll" data-bs-target="navbar">
+        <div class="container d-flex justify-content-center align-items-center vh-100">
+            <div class="glassmorphism p-5">
+                <div class="text-center">
+                    <img src="/images/MY_avatar.jpg" alt="Profile Pic" class="rounded-circle"
+                        style="height:100px; width:100px">
+                    <h1 class="mt-3">Admin</h1>
+                </div>
+                <form class="mt-3 text-dark" id="loginAdmin" style="font-weight: bold;">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <div class="container d-flex justify-content-center ">
+                        <button type="submit" class="btn btn-success p-1 my-2">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </body>
+
+    <script>
+        var formLoginAdmin = document.querySelector('#loginAdmin')
+
+        formLoginAdmin.addEventListener('submit', (event) => {
+            event.preventDefault()
+            const formData = new FormData(formLoginAdmin);
+            
+            const formValues = Object.fromEntries(formData.entries());
+
+            $.ajax({
+                url: `${baseURL}/admin/auth`,
+                method: 'POST',
+                data: JSON.stringify(formValues),
+                contentType: 'application/json',
+                success: function (response) {
+                    if (response.status === "error")
+                        alert(response.message)
+                    else
+                        alert(response.message)
+                },
+                error: function (response) {
+                    alert(response.message)
+                }
+            })
+        })
+    </script>

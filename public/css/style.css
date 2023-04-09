@@ -73,7 +73,12 @@ img {
     padding-bottom: 80px;
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
-
+.glassmorphism {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+  }
+  
 .shadow-effect {
     transition: all 0.5s;
 }

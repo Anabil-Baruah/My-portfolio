@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const app = express()
 const port = process.env.PORT || 3000
@@ -15,14 +16,18 @@ db.once('open', function () {
     console.log('Connected to MongoDB');
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(cookieParser());
 
 app.use('/', express.static(__dirname + '/public'));
 
 
 app.use('/', require('./routes/index'))
 app.use('/admin', require('./routes/admin'))
+app.use(function (req, res, next) {
+    res.status(404).render('404');
+});
 
 
 

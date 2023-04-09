@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
-    linkURL: String,
+    blogLink: String,
     img: String,
-    Description: String,
+    Heading: String,
     time:{type:String, default:Date.now}
 })
 

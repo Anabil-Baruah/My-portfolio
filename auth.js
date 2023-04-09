@@ -20,7 +20,7 @@ const auth = async (req, res, next) => {
         next();
     } catch (error) {
         console.log("Shit")
-        res.redirect(`${baseURL}/login`)
+        res.redirect(`${baseURL}/admin/auth`)
     }
 }
 
@@ -34,7 +34,7 @@ const auth2 = async (req, res, next) => {
        
 
         if(verifyUser !== null)
-            return res.redirect(`${baseURL}`)
+            return res.redirect(`${baseURL}/admin`)
         req.user = user;
         req.accessToken = token
         next();

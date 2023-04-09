@@ -1,33 +1,37 @@
 const router = require('express').Router()
-const { auth, baseURL } = require('../auth')
+const { auth, baseURL, auth2 } = require('../auth')
 const service = require('../models/services')
 const blog = require('../models/Blogs')
 const work = require('../models/work')
 const adminInfo = require('../models/adminInfo')
 const jwt = require('jsonwebtoken')
 const cloudinary = require('../cloudinary')
+const bcrypt = require('bcrypt')
+const request = require('../models/requests')
 
 router.route('/')
-    .get(async (req, res) => {
+    .get(auth, async (req, res) => {
         var services = await service.find({})
         var works = await work.find({})
         var blogs = await blog.find({})
+        var requests = await request.find({})
         works = JSON.parse(JSON.stringify(works))
         blogs = JSON.parse(JSON.stringify(blogs))
         services = JSON.parse(JSON.stringify(services))
-        res.render('admin', { services, blogs, works })
+        requests = JSON.parse(JSON.stringify(requests))
+        console.log(requests)
+        res.render('admin', { services, blogs, works ,requests})
     })
 
 router.route('/auth')
-    .get(async (req, res) => {
+    .get(auth2, async (req, res) => {
         res.render('authentication')
     })
     .post(async (req, res) => {
         var username = req.body.username;
         var password = req.body.password;
 
-
-        const userFound = await adminInfo.findOne({ email })
+        const userFound = await adminInfo.findOne({ username })
 
 
         if (userFound == null) {
@@ -61,9 +65,11 @@ router.route('/auth')
                         accessToken
                     }
                 })
-                console.log(result)
                 if (result !== null) {
-                    res.redirect(`${baseURL}/admin`)
+                    return res.json({
+                        status: "success",
+                        message: "Authentication success"
+                    })
                 } else {
                     res.json({
                         status: "error",
@@ -151,7 +157,7 @@ router.route('/addBlog')
         if (BlogSave)
             res.json({ status: "success", message: "Blog uploaded succesfully" })
         else
-            res.json({ status: "error", message:"Some error occured" })
+            res.json({ status: "error", message: "Some error occured" })
     })
 
 

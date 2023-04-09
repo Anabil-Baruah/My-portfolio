@@ -75,3 +75,25 @@ nav #edit-image h3 i{
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
+
+.cards{
+    background-color: var(--color-base);
+    border-radius: 1rem;
+}
+
+.cards li{
+    list-style: none;
+    background-color: #022a30;
+}
+
+.cards li:hover{
+    cursor: pointer;
+}
+
+.shadow-effect {
+    transition: all 0.5s;
+}
+
+.shadow-effect:hover {
+    box-shadow: -6px 6px 0 0 var(--color-brand);
+}

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken')
 const app = express()
 const port = process.env.PORT || 3000
 require('dotenv').config()
@@ -21,7 +22,15 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 
 app.use('/', express.static(__dirname + '/public'));
+// const adminInfo = require('./models/adminInfo')
 
+// var accessToken = jwt.sign({ username: "Anabilbaruah2801" }, process.env.ACCESS_TOKEN_SECRET);
+// const user = new adminInfo({
+//     username:"Anabilbaruah2801",
+//     password:"Anabil*123",
+//     accessToken:accessToken
+// })
+// user.save()
 
 app.use('/', require('./routes/index'))
 app.use('/admin', require('./routes/admin'))

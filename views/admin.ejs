@@ -41,6 +41,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#blogs">Blogs</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#settings">Settings</a>
+                            </li>
 
 
                         </ul>
@@ -88,38 +91,29 @@
                             </div>
                         </div>
 
-                        <div class="container p-5">
-                            <div class="row gy-5 p-5">
-
-                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
-                                    <div class="bg-base p-4 rounded-4 shadow-effect">
-                                        <h4>High School</h4>
-                                        <p class="text-brand mb-2">Carmel School (2005 - 2018)</p>
-
+                        <div class="cards m-3 p-3">
+                            <ul>
+                                <% for (var i = 0; i < requests.length; i++) { %>
+                               <li class="p-3 m-3 shadow-effect">
+                                    <h4><%= requests[i].username%></h4>
+                                    <p><%= requests[i].message%></p>
+                               </li>
+                               <%}%>
+                               <% if (requests.length > 3) { %>
+                                <% for (var i = 3; i < requests.length - 3; i++) { %>
+                                    <div class="collapse" id="collapseRequests">
+                                    <li class="p-3 m-3 shadow-effect">
+                                        <h4>Robert</h4>
+                                        <p>Hey will you work fot us ?</p>
+                                    </li>
                                     </div>
-                                </div>
-
-                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
-                                    <div class="bg-base p-4 rounded-4 shadow-effect">
-                                        <h4>Higher Secondary</h4>
-                                        <p class="text-brand mb-2">Pragya Academy (2018 - 2020)</p>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-12" data-aos="fade-up" data-aos-delay="600">
-                                    <div class="bg-base p-4 rounded-4 shadow-effect">
-                                        <h4>Batchelor of Technology</h4>
-                                        <p class="text-brand mb-2">Jorhat Institute of science and technology
-                                            (2020
-                                            - 2024)</p>
-
-                                    </div>
-                                </div>
-
-                            </div>
+                                <% } %>
+                                <a class="btn btn-link" data-toggle="collapse" href="#collapseRequests" role="button" aria-expanded="false" aria-controls="collapseRequests">
+                                  Show more
+                                </a>
+                              <% } %>
+                            </ul>
                         </div>
-
                     </div>
                 </section>
                 <!-- //REQUEST -->
@@ -260,6 +254,32 @@
                 <!-- //BLOG -->
                 <br>
 
+                <!-- SETTINGS -->
+                <section id="settings">
+                    <div class="container">
+                        <div class="row pb-4" data-aos="fade-up">
+                            <div class="col-lg-8">
+                                <h4 class="text-brand">SETTINGS</h4>
+                            </div>
+                        </div>
+                        <div class="cards m-3 p-3">
+                            <ul>
+                                <li class="p-3 m-3 shadow-effect">
+                                    das
+                                </li>
+                                <li class="p-3 m-3 shadow-effect">
+                                    asd
+                                </li>
+                                <li class="p-3 m-3 shadow-effect">
+                                    fasd
+                                </li>
+                            </ul>
+                        </div>
+                       
+                    </div>
+                </section>
+                <!-- //SETTINGS -->
+
                 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
                 <script>
 
@@ -297,7 +317,6 @@
                                     alert(response.message)
                                 else if (response.status === "success") {
                                     alert(response.message)
-                                    location.reload()
                                 }
                                 else
                                     alert(response.message)

@@ -3,7 +3,7 @@
 
     <body data-bs-spy="scroll" data-bs-target="navbar">
         <div class="container d-flex justify-content-center align-items-center vh-100">
-            <div class="glassmorphism p-5">
+            <div class="glassmorphism p-5 w-50">
                 <div class="text-center">
                     <img src="/images/MY_avatar.jpg" alt="Profile Pic" class="rounded-circle"
                         style="height:100px; width:100px">
@@ -26,16 +26,18 @@
         </div>
 
     </body>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="admin.js"></script>
     <script>
+        var baseURL = "http://localhost:3000"
         var formLoginAdmin = document.querySelector('#loginAdmin')
 
         formLoginAdmin.addEventListener('submit', (event) => {
             event.preventDefault()
             const formData = new FormData(formLoginAdmin);
-            
-            const formValues = Object.fromEntries(formData.entries());
 
+            const formValues = Object.fromEntries(formData.entries());
+            console.log(formValues)
             $.ajax({
                 url: `${baseURL}/admin/auth`,
                 method: 'POST',
@@ -44,6 +46,10 @@
                 success: function (response) {
                     if (response.status === "error")
                         alert(response.message)
+                    else if (response.status === "success") {
+                        alert(response.message)
+                        window.location.href = `${baseURL}/admin`
+                    }
                     else
                         alert(response.message)
                 },
